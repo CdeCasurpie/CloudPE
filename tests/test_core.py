@@ -1,14 +1,28 @@
 import numpy as np
 import pytest
-from cloudlab.core import (Cloud, synthetic, save_cloud, load_cloud, clean, crop,
-                           estimate_normals, segment, reconstruct, mesh_report,
-                           repair_planar_holes, spacing)
+
+from cloudpe.core import (
+    Cloud,
+    clean,
+    crop,
+    estimate_normals,
+    load_cloud,
+    mesh_report,
+    reconstruct,
+    save_cloud,
+    segment,
+    spacing,
+    synthetic,
+)
+from cloudpe.experimental import repair_planar_holes
 
 
 def test_ply_roundtrip(tmp_path):
     cloud = synthetic(n=200, outliers=0)
     cloud.attrs["block_id"] = np.ones(200, dtype=np.uint16)
-    path = tmp_path / "test.ply"; save_cloud(cloud, path); restored = load_cloud(path)
+    path = tmp_path / "test.ply"
+    save_cloud(cloud, path)
+    restored = load_cloud(path)
     np.testing.assert_allclose(restored.xyz, cloud.xyz)
     np.testing.assert_array_equal(restored.attrs["rgb"], cloud.attrs["rgb"])
     np.testing.assert_array_equal(restored.attrs["block_id"], cloud.attrs["block_id"])
@@ -24,8 +38,8 @@ def test_clean_duplicates_outliers():
 
 
 def test_normals_plane():
-    cloud = estimate_normals(synthetic("plane", n=1500, noise=.0001, outliers=0))
-    assert np.median(np.abs(cloud.attrs["normals"][:, 2])) > .999
+    cloud = estimate_normals(synthetic("plane", n=1500, noise=0.0001, outliers=0))
+    assert np.median(np.abs(cloud.attrs["normals"][:, 2])) > 0.999
     assert cloud.attrs["normal_valid"].all()
 
 
@@ -36,11 +50,11 @@ def test_degenerate_normals():
 
 
 def test_regions_corner():
-    cloud = estimate_normals(synthetic("corner", n=2500, noise=.0001, outliers=0))
+    cloud = estimate_normals(synthetic("corner", n=2500, noise=0.0001, outliers=0))
     result = segment(cloud, min_size=100)
     labels = result.attrs["segment"]
     assert len(np.unique(labels[labels >= 0])) >= 2
-    assert np.mean(labels >= 0) > .7
+    assert np.mean(labels >= 0) > 0.7
 
 
 def test_graph_no_color():
@@ -51,18 +65,18 @@ def test_graph_no_color():
 
 
 def test_bpa_and_repair():
-    cloud = estimate_normals(synthetic("sphere", n=2500, noise=.0001, outliers=0))
+    cloud = estimate_normals(synthetic("sphere", n=2500, noise=0.0001, outliers=0))
     mesh = reconstruct(cloud)
     assert len(mesh.triangles) > 1000
     report = mesh_report(mesh, cloud)
-    assert report["point_to_mesh_p50_p95"][1] < .1
+    assert report["point_to_mesh_p50_p95"][1] < 0.1
     repaired, info = repair_planar_holes(mesh, cloud)
     assert len(repaired.triangles) >= len(mesh.triangles)
 
 
 def test_crop_and_errors():
     cloud = synthetic(n=100)
-    assert len(crop(cloud, [-.2, -.2, -.2], [.2, .2, .2]).xyz) < len(cloud.xyz)
+    assert len(crop(cloud, [-0.2, -0.2, -0.2], [0.2, 0.2, 0.2]).xyz) < len(cloud.xyz)
     with pytest.raises(ValueError):
         crop(cloud, block=1)
     with pytest.raises(ValueError):
@@ -84,13 +98,28 @@ def test_graph_color_splits_plane():
 
 def test_local_repair_supported_square():
     import open3d as o3d
+
     # Four quads surrounding a missing central square, all coplanar.
-    vertices = np.array([[-2,-2,0], [2,-2,0], [2,2,0], [-2,2,0],
-                         [-.5,-.5,0], [.5,-.5,0], [.5,.5,0], [-.5,.5,0]], float)
-    triangles = np.array([[0,1,5], [0,5,4], [1,2,6], [1,6,5],
-                          [2,3,7], [2,7,6], [3,0,4], [3,4,7]])
-    mesh = o3d.geometry.TriangleMesh(o3d.utility.Vector3dVector(vertices), o3d.utility.Vector3iVector(triangles))
-    x, y = np.meshgrid(np.linspace(-2,2,17), np.linspace(-2,2,17))
+    vertices = np.array(
+        [
+            [-2, -2, 0],
+            [2, -2, 0],
+            [2, 2, 0],
+            [-2, 2, 0],
+            [-0.5, -0.5, 0],
+            [0.5, -0.5, 0],
+            [0.5, 0.5, 0],
+            [-0.5, 0.5, 0],
+        ],
+        float,
+    )
+    triangles = np.array(
+        [[0, 1, 5], [0, 5, 4], [1, 2, 6], [1, 6, 5], [2, 3, 7], [2, 7, 6], [3, 0, 4], [3, 4, 7]]
+    )
+    mesh = o3d.geometry.TriangleMesh(
+        o3d.utility.Vector3dVector(vertices), o3d.utility.Vector3iVector(triangles)
+    )
+    x, y = np.meshgrid(np.linspace(-2, 2, 17), np.linspace(-2, 2, 17))
     support = Cloud(np.column_stack([x.ravel(), y.ravel(), np.zeros(x.size)]))
     repaired, info = repair_planar_holes(mesh, support)
     assert info["accepted_loops"] == 1
@@ -98,10 +127,12 @@ def test_local_repair_supported_square():
 
 
 def test_absolute_bpa_radii_match_relative():
-    cloud=estimate_normals(synthetic('sphere',n=800,noise=0,outliers=0))
-    h=spacing(cloud.xyz)['median']
-    relative=reconstruct(cloud,[2.5,4,6])
-    absolute=reconstruct(cloud,[h*r for r in [2.5,4,6]],radius_mode='absolute')
-    np.testing.assert_array_equal(np.asarray(relative.triangles),np.asarray(absolute.triangles))
-    with pytest.raises(ValueError):reconstruct(cloud,[np.nan])
-    with pytest.raises(ValueError):reconstruct(cloud,[1],radius_mode='unknown')
+    cloud = estimate_normals(synthetic("sphere", n=800, noise=0, outliers=0))
+    h = spacing(cloud.xyz)["median"]
+    relative = reconstruct(cloud, [2.5, 4, 6])
+    absolute = reconstruct(cloud, [h * r for r in [2.5, 4, 6]], radius_mode="absolute")
+    np.testing.assert_array_equal(np.asarray(relative.triangles), np.asarray(absolute.triangles))
+    with pytest.raises(ValueError):
+        reconstruct(cloud, [np.nan])
+    with pytest.raises(ValueError):
+        reconstruct(cloud, [1], radius_mode="unknown")

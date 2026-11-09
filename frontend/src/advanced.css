@@ -1,9 +1,50 @@
-.check-label{display:flex;align-items:center;gap:8px;line-height:1.5}
-.check-label input{accent-color:#a3e5d4;width:13px;height:13px;margin:0;flex-shrink:0}
-.radius-readout{font-size:9px;color:#a3e5d4;line-height:1.7;background:#a3e5d408;border:1px solid #a3e5d41a;border-radius:7px;padding:9px}
-.mesh-diagnostics{display:flex;gap:25px;margin:20px 0 10px}
-.mesh-diagnostics div{display:flex;flex-direction:column;gap:5px}
-.mesh-diagnostics b{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:400}
-.mesh-diagnostics span{font-size:8px;color:#8f9aa3}
-#stage-body details small{font-size:9px;line-height:1.7;display:block;color:#8c99a3}
-#panel{scrollbar-color:#3a454b transparent}
+.check-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.5;
+}
+.check-label input {
+  accent-color: #a3e5d4;
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  flex-shrink: 0;
+}
+.radius-readout {
+  font-size: 9px;
+  color: #a3e5d4;
+  line-height: 1.7;
+  background: #a3e5d408;
+  border: 1px solid #a3e5d41a;
+  border-radius: 7px;
+  padding: 9px;
+}
+.mesh-diagnostics {
+  display: flex;
+  gap: 25px;
+  margin: 20px 0 10px;
+}
+.mesh-diagnostics div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mesh-diagnostics b {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+}
+.mesh-diagnostics span {
+  font-size: 8px;
+  color: #8f9aa3;
+}
+#stage-body details small {
+  font-size: 9px;
+  line-height: 1.7;
+  display: block;
+  color: #8c99a3;
+}
+#panel {
+  scrollbar-color: #3a454b transparent;
+}

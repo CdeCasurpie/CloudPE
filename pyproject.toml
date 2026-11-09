@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cloudlab-cpu"
-version = "0.1.0"
-description = "Procesamiento reproducible de nubes de puntos en CPU"
+name = "cloudpe"
+version = "0.3.0"
+description = "CloudPE: laboratorio visual de procesamiento de nubes de puntos en CPU"
 requires-python = ">=3.10"
 dynamic = ["dependencies"]
 
@@ -13,10 +13,18 @@ dynamic = ["dependencies"]
 dependencies = {file = ["requirements.txt"]}
 
 [tool.setuptools.packages.find]
-include = ["cloudlab*"]
+include = ["cloudpe*"]
 
 [project.scripts]
-cloudlab = "cloudlab.cli:main"
+cloudpe = "cloudpe.cli:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "-p no:dash"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
