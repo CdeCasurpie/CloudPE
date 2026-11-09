@@ -1,0 +1,98 @@
+{
+  "bunny/original.ply": {
+    "bytes": 360122,
+    "sha256": "95fb0e01137cbd08af95c32981bc8812c20181536bff9694ddb0d97e5a0c0cfb"
+  },
+  "bunny/processed.ply": {
+    "bytes": 889551,
+    "sha256": "db7f09871f72c60855c135b8a8887153167b4d2232e31737a94aff497e5603ac"
+  },
+  "bunny/mesh.ply": {
+    "bytes": 972533,
+    "sha256": "33d1b1e6b48cb1c15f7325ba6593bc9b86e466701355ef6feda9330703c0bd4f"
+  },
+  "bunny/report.json": {
+    "bytes": 1947,
+    "sha256": "f5f4361f9da43905a396cee20de2d6c01b3b4761d2e6325d00f529c70e9fc859"
+  },
+  "fachada/original.ply": {
+    "bytes": 707232,
+    "sha256": "210f4f0abe26ec5c118da5f75fca5ba7bcb230ad61aeabe02c931a32df835b7a"
+  },
+  "fachada/processed.ply": {
+    "bytes": 1422673,
+    "sha256": "1a0ac96ed4a76f05802a0df9b73ac5292c3fc27fa7b39b1938ecdf72debc0e12"
+  },
+  "fachada/mesh.ply": {
+    "bytes": 1275659,
+    "sha256": "1fd61a7b2e19aabc324b05b4c4288d5085f96fba49813629c26dfc6fb3748450"
+  },
+  "fachada/report.json": {
+    "bytes": 1887,
+    "sha256": "db51edff6f1614899510dd777f67c999e8dffa03a3b643595367de126d9e4471"
+  },
+  "esfera/original.ply": {
+    "bytes": 903016,
+    "sha256": "d4731332bd59cb032e70c27a10f6c9b8998cbab877e51f0e320e6bf3dee22144"
+  },
+  "esfera/processed.ply": {
+    "bytes": 1427860,
+    "sha256": "c3ecca5449d7fef2cfc75b7a143f27c3e288661204c6ba9a64c7548f636d098f"
+  },
+  "esfera/mesh.ply": {
+    "bytes": 1084218,
+    "sha256": "6d9bd3ef7d6a5d2f10b6147c52ae4711094a772817a5eaf04cd94904d18ba743"
+  },
+  "esfera/report.json": {
+    "bytes": 1765,
+    "sha256": "c2efb687ab5c6af4d6a9a69287a9e2f542fc11958eb376dd652adc362951aab5"
+  },
+  "esquina/original.ply": {
+    "bytes": 722476,
+    "sha256": "cac3e8634f7e2ede5606d9917e6bd481f5fec5a0575d55695185f46868a7dd0f"
+  },
+  "esquina/processed.ply": {
+    "bytes": 1141815,
+    "sha256": "bedf2bd8442c31082ce476517dd7d3f8f80eb886fb23889087237e7cc6495235"
+  },
+  "esquina/mesh.ply": {
+    "bytes": 861605,
+    "sha256": "7ae7ab90b01ed7af28d8331215d97c6bfe1511183a83b1cded9a24abdf1376f2"
+  },
+  "esquina/report.json": {
+    "bytes": 1727,
+    "sha256": "c16cfbad988ec11001a855125402c1c1881941e05d2102919268a7d08b326dba"
+  },
+  "cuadra_dense/original.ply": {
+    "bytes": 1075262,
+    "sha256": "e7f2a927a0f1ba5ebe9a188ebf13ba9d6ff16bb4e5f78bba1f14ea2cf37fa5a1"
+  },
+  "cuadra_dense/processed.ply": {
+    "bytes": 1640336,
+    "sha256": "f695e493a7c461064d17dd8b4be00b18fd2b220776bef31e04a938e64f869986"
+  },
+  "cuadra_dense/mesh.ply": {
+    "bytes": 1687697,
+    "sha256": "ca686aa4a82c8851071d9f774ebe203618f3eeeb0c2ac7d859663f3a38e3b657"
+  },
+  "cuadra_dense/report.json": {
+    "bytes": 1943,
+    "sha256": "f1f755ad3aaea80fd7a4372e9a2721a1a2ba05c3f6a2d8a78244841608607e9c"
+  },
+  "cuadra_sparse/original.ply": {
+    "bytes": 611125,
+    "sha256": "a9a8fb6541afbb4086e4eead96d3c66f3bdcb7bc8142df18ad3162d72d43c802"
+  },
+  "cuadra_sparse/processed.ply": {
+    "bytes": 1264801,
+    "sha256": "8bc64f0cc01dad847feb6e57d1561819e3e6ace9f283fa90d92918ff101d0fd5"
+  },
+  "cuadra_sparse/mesh.ply": {
+    "bytes": 1070392,
+    "sha256": "33670594bb918d0a49993165d7490e2e3597785058ef900a0c1bc457b738e9a7"
+  },
+  "cuadra_sparse/report.json": {
+    "bytes": 1963,
+    "sha256": "e289dc2146bd8e243902fdf5623b9bf2058b9c09b9f6a454e40de0e398122d4f"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "name": "cuadra_dense",
+  "description": "Nube fotogramétrica del usuario (dense), hasta 25k puntos, precalculada sin alterar el original.",
+  "cleaning": {
+    "input_finite": 25000,
+    "duplicates_removed": 0,
+    "after_voxel": 25000,
+    "outliers_removed": 523,
+    "output": 24477,
+    "seconds": 0.07523764499637764
+  },
+  "mesh": {
+    "vertices": 23375,
+    "triangles": 38096,
+    "boundary_edges": 14398,
+    "nonmanifold_edges": 0,
+    "components": 371,
+    "edge_length_p50_p95": [
+      0.16253514407068148,
+      0.3906296842843542
+    ],
+    "point_to_mesh_p50_p95": [
+      0.0,
+      0.0
+    ],
+    "mesh_to_points_p50_p95": [
+      0.0799201687453403,
+      0.18766621184881782
+    ]
+  },
+  "history": [
+    {
+      "operation": "bounded_load",
+      "path": "cuadra-025_0-10s_dense.ply",
+      "original_points": 1685281,
+      "loaded_points": 25000,
+      "max_points": 25000,
+      "sampling": "stratified deterministic seed 42",
+      "skipped_list_attributes": true
+    },
+    {
+      "operation": "eliminar no finitos"
+    },
+    {
+      "operation": "deduplicación exacta"
+    },
+    {
+      "operation": "filtrado de atípicos"
+    },
+    {
+      "operation": "clean",
+      "voxel": 0.0,
+      "neighbors": 20,
+      "std_ratio": 2.5,
+      "radius": 0.0,
+      "input_finite": 25000,
+      "duplicates_removed": 0,
+      "after_voxel": 25000,
+      "outliers_removed": 523,
+      "output": 24477,
+      "seconds": 0.07523764499637764
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "PCA normals",
+      "k": 30,
+      "max_radius": 0.0,
+      "oriented": true,
+      "valid": 24477
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "segment",
+      "method": "regions",
+      "k": 12,
+      "radius": 0.29965723014080053,
+      "angle": 20.0,
+      "plane": 0.07491430753520013,
+      "min_size": 50,
+      "color_weight": 0.5,
+      "scale": 0.4
+    }
+  ]
+}

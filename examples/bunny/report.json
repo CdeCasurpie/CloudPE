@@ -1,0 +1,90 @@
+{
+  "name": "bunny",
+  "description": "Stanford Bunny obtenido mediante Open3D: 15k muestras de una malla con ruido gaussiano. No es una captura LiDAR ni COLMAP.",
+  "cleaning": {
+    "input_finite": 15000,
+    "duplicates_removed": 0,
+    "after_voxel": 15000,
+    "outliers_removed": 179,
+    "output": 14821,
+    "seconds": 0.04850111399719026
+  },
+  "mesh": {
+    "vertices": 13296,
+    "triangles": 25697,
+    "boundary_edges": 2067,
+    "nonmanifold_edges": 0,
+    "components": 2,
+    "edge_length_p50_p95": [
+      0.0023164212757059172,
+      0.00420448621101427
+    ]
+  },
+  "history": [
+    {
+      "operation": "sample_bunny",
+      "source": "Open3D BunnyMesh / Stanford 3D Scanning Repository",
+      "noise_sigma": 0.00024996644153558664
+    },
+    {
+      "operation": "eliminar no finitos"
+    },
+    {
+      "operation": "deduplicación exacta"
+    },
+    {
+      "operation": "filtrado de atípicos"
+    },
+    {
+      "operation": "clean",
+      "voxel": 0.0,
+      "neighbors": 20,
+      "std_ratio": 2.5,
+      "radius": 0.0,
+      "input_finite": 15000,
+      "duplicates_removed": 0,
+      "after_voxel": 15000,
+      "outliers_removed": 179,
+      "output": 14821,
+      "seconds": 0.04850111399719026
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "PCA normals",
+      "k": 30,
+      "max_radius": 0.0,
+      "oriented": true,
+      "valid": 14821
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "segment",
+      "method": "regions",
+      "k": 12,
+      "radius": 0.003893110780784974,
+      "angle": 20.0,
+      "plane": 0.0009732776951962435,
+      "min_size": 50,
+      "color_weight": 0.5,
+      "scale": 0.4
+    }
+  ],
+  "bpa_config": {
+    "radii": [
+      2.5,
+      4,
+      6
+    ],
+    "radius_mode": "median",
+    "effective_radii": [
+      0.002433194237990608,
+      0.003893110780784973,
+      0.00583966617117746
+    ],
+    "recompute_normals": false
+  }
+}

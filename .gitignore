@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+.pytest_cache/
+outputs/
+*.egg-info/
+examples/.downloads/
+.cloudpe/
+frontend/node_modules/
+frontend/dist/
+frontend/test-results/
+frontend/playwright-report/
+
+# Full-resolution thesis data: bundled examples/ remain versioned.
+/dense_preview_5M.ply
+/combined_or.ply
+
+# Local credentials, logs and editor files.
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store

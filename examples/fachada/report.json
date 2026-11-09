@@ -1,0 +1,90 @@
+{
+  "name": "fachada",
+  "description": "Fachada sintética con tres ventanas retranqueadas, ruido gaussiano y 1 % de puntos espurios. No es una simulación física de LiDAR.",
+  "cleaning": {
+    "input_finite": 20200,
+    "duplicates_removed": 0,
+    "after_voxel": 20200,
+    "outliers_removed": 168,
+    "output": 20032,
+    "seconds": 0.0973919800017029
+  },
+  "mesh": {
+    "vertices": 16852,
+    "triangles": 31991,
+    "boundary_edges": 2789,
+    "nonmanifold_edges": 0,
+    "components": 5,
+    "edge_length_p50_p95": [
+      0.056818028865621414,
+      0.10019201065434784
+    ]
+  },
+  "history": [
+    {
+      "operation": "synthetic_facade",
+      "seed": 21,
+      "noise_sigma": 0.008
+    },
+    {
+      "operation": "eliminar no finitos"
+    },
+    {
+      "operation": "deduplicación exacta"
+    },
+    {
+      "operation": "filtrado de atípicos"
+    },
+    {
+      "operation": "clean",
+      "voxel": 0.0,
+      "neighbors": 20,
+      "std_ratio": 2.5,
+      "radius": 0.0,
+      "input_finite": 20200,
+      "duplicates_removed": 0,
+      "after_voxel": 20200,
+      "outliers_removed": 168,
+      "output": 20032,
+      "seconds": 0.0973919800017029
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "PCA normals",
+      "k": 30,
+      "max_radius": 0.0,
+      "oriented": true,
+      "valid": 20032
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "segment",
+      "method": "regions",
+      "k": 12,
+      "radius": 0.09614820939991475,
+      "angle": 20.0,
+      "plane": 0.024037052349978688,
+      "min_size": 50,
+      "color_weight": 0.5,
+      "scale": 0.4
+    }
+  ],
+  "bpa_config": {
+    "radii": [
+      2.5,
+      4,
+      6
+    ],
+    "radius_mode": "median",
+    "effective_radii": [
+      0.06009263087494658,
+      0.09614820939991453,
+      0.1442223140998718
+    ],
+    "recompute_normals": false
+  }
+}

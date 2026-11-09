@@ -1,0 +1,84 @@
+{
+  "name": "esquina",
+  "description": "Dos superficies perpendiculares: normales PCA y segmentación geométrica.",
+  "cleaning": {
+    "input_finite": 12240,
+    "duplicates_removed": 0,
+    "after_voxel": 12240,
+    "outliers_removed": 226,
+    "output": 12014,
+    "seconds": 0.08573190101014916
+  },
+  "mesh": {
+    "vertices": 11760,
+    "triangles": 20117,
+    "boundary_edges": 7951,
+    "nonmanifold_edges": 0,
+    "components": 57,
+    "edge_length_p50_p95": [
+      0.019881457300198746,
+      0.03892844829421238
+    ],
+    "point_to_mesh_p50_p95": [
+      0.0,
+      0.0
+    ],
+    "mesh_to_points_p50_p95": [
+      0.00844657569951181,
+      0.017421262581456397
+    ]
+  },
+  "history": [
+    {
+      "operation": "synthetic",
+      "kind": "corner",
+      "seed": 42
+    },
+    {
+      "operation": "eliminar no finitos"
+    },
+    {
+      "operation": "deduplicación exacta"
+    },
+    {
+      "operation": "filtrado de atípicos"
+    },
+    {
+      "operation": "clean",
+      "voxel": 0.0,
+      "neighbors": 20,
+      "std_ratio": 2.5,
+      "radius": 0.0,
+      "input_finite": 12240,
+      "duplicates_removed": 0,
+      "after_voxel": 12240,
+      "outliers_removed": 226,
+      "output": 12014,
+      "seconds": 0.08573190101014916
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "PCA normals",
+      "k": 30,
+      "max_radius": 0.0,
+      "oriented": true,
+      "valid": 12014
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "segment",
+      "method": "regions",
+      "k": 12,
+      "radius": 0.03648437775359204,
+      "angle": 20.0,
+      "plane": 0.00912109443839801,
+      "min_size": 50,
+      "color_weight": 0.5,
+      "scale": 0.4
+    }
+  ]
+}

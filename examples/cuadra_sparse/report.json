@@ -1,0 +1,88 @@
+{
+  "name": "cuadra_sparse",
+  "description": "Nube fotogramétrica del usuario (sparse), hasta 25k puntos, precalculada sin alterar el original.",
+  "cleaning": {
+    "input_finite": 19707,
+    "duplicates_removed": 623,
+    "after_voxel": 19084,
+    "outliers_removed": 212,
+    "output": 18872,
+    "seconds": 0.06346084199321922
+  },
+  "mesh": {
+    "vertices": 15497,
+    "triangles": 21517,
+    "boundary_edges": 14489,
+    "nonmanifold_edges": 0,
+    "components": 754,
+    "edge_length_p50_p95": [
+      0.21697429815847302,
+      0.5238713870022441
+    ],
+    "point_to_mesh_p50_p95": [
+      0.0,
+      0.3211590394377711
+    ],
+    "mesh_to_points_p50_p95": [
+      0.10843093888921583,
+      0.2628847737436163
+    ]
+  },
+  "history": [
+    {
+      "operation": "bounded_load",
+      "path": "cuadra-025_0-10s_sparse.ply",
+      "original_points": 19707,
+      "loaded_points": 19707,
+      "max_points": 25000,
+      "sampling": "stratified deterministic seed 42",
+      "skipped_list_attributes": false
+    },
+    {
+      "operation": "eliminar no finitos"
+    },
+    {
+      "operation": "deduplicación exacta"
+    },
+    {
+      "operation": "filtrado de atípicos"
+    },
+    {
+      "operation": "clean",
+      "voxel": 0.0,
+      "neighbors": 20,
+      "std_ratio": 2.5,
+      "radius": 0.0,
+      "input_finite": 19707,
+      "duplicates_removed": 623,
+      "after_voxel": 19084,
+      "outliers_removed": 212,
+      "output": 18872,
+      "seconds": 0.06346084199321922
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "PCA normals",
+      "k": 30,
+      "max_radius": 0.0,
+      "oriented": true,
+      "valid": 18872
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "segment",
+      "method": "regions",
+      "k": 12,
+      "radius": 0.4065384840542715,
+      "angle": 20.0,
+      "plane": 0.10163462101356788,
+      "min_size": 50,
+      "color_weight": 0.5,
+      "scale": 0.4
+    }
+  ]
+}

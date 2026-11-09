@@ -1,0 +1,84 @@
+{
+  "name": "esfera",
+  "description": "Superficie curva sintética con ruido y puntos atípicos; útil para inspeccionar BPA, no segmentación planar.",
+  "cleaning": {
+    "input_finite": 15300,
+    "duplicates_removed": 0,
+    "after_voxel": 15300,
+    "outliers_removed": 275,
+    "output": 15025,
+    "seconds": 0.06592094698862638
+  },
+  "mesh": {
+    "vertices": 14710,
+    "triangles": 25668,
+    "boundary_edges": 9556,
+    "nonmanifold_edges": 0,
+    "components": 71,
+    "edge_length_p50_p95": [
+      0.031682233443198524,
+      0.061467054612804536
+    ],
+    "point_to_mesh_p50_p95": [
+      0.0,
+      0.0
+    ],
+    "mesh_to_points_p50_p95": [
+      0.013458731988733173,
+      0.02779633384568045
+    ]
+  },
+  "history": [
+    {
+      "operation": "synthetic",
+      "kind": "sphere",
+      "seed": 42
+    },
+    {
+      "operation": "eliminar no finitos"
+    },
+    {
+      "operation": "deduplicación exacta"
+    },
+    {
+      "operation": "filtrado de atípicos"
+    },
+    {
+      "operation": "clean",
+      "voxel": 0.0,
+      "neighbors": 20,
+      "std_ratio": 2.5,
+      "radius": 0.0,
+      "input_finite": 15300,
+      "duplicates_removed": 0,
+      "after_voxel": 15300,
+      "outliers_removed": 275,
+      "output": 15025,
+      "seconds": 0.06592094698862638
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "PCA normals",
+      "k": 30,
+      "max_radius": 0.0,
+      "oriented": true,
+      "valid": 15025
+    },
+    {
+      "operation": "copia"
+    },
+    {
+      "operation": "segment",
+      "method": "regions",
+      "k": 12,
+      "radius": 0.05729134882403846,
+      "angle": 20.0,
+      "plane": 0.014322837206009615,
+      "min_size": 50,
+      "color_weight": 0.5,
+      "scale": 0.4
+    }
+  ]
+}
